@@ -18,4 +18,5 @@ EXPOSE 6817 6818 6819 3306
 
 WORKDIR /home/admin
 
+RUN pip3 install submitit
 ENTRYPOINT ["/etc/slurm-llnl/docker-entrypoint.sh"]
