@@ -14,6 +14,6 @@ RUN chmod 600 /etc/munge/munge.key && chgrp munge /etc/munge/munge.key && sudo c
 
 EXPOSE 6817 6818 6819
 
-RUN apt update -y && apt install libopenmpi-dev -y && pip3 install mpi4py
+RUN apt update -y && apt install libopenmpi-dev -y && pip3 install mpi4py submitit
 
 ENTRYPOINT ["/etc/slurm-llnl/docker-entrypoint.sh"]
