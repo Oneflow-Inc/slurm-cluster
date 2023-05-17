@@ -1,6 +1,6 @@
 set -x
 NODENAME=${NODENAME:-1}
-IMG_NAME=registry.cn-beijing.aliyuncs.com/oneflow/slurm-worker:v0.1
+IMG_NAME=registry.cn-beijing.aliyuncs.com/oneflow/slurm-worker:v0.3
 
 docker pull ${IMG_NAME} 
 if docker ps -a --filter "ancestor=${IMG_NAME}" | grep -q "Up"; then
@@ -9,7 +9,7 @@ fi
 
 echo "old container will be stopped"
 # --gpus all 
-docker run -d --rm --name slurm-worker-$USER --network=host \
+docker run -d --gpus all --rm --name slurm-worker-$USER --network=host \
 --add-host=$(hostname):127.0.0.1 \
 --add-host=slurmmaster:10.1.0.6 \
 --add-host=slurmnode1:10.0.0.9 \

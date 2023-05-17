@@ -1,6 +1,6 @@
 set -x
 
-IMG_NAME="registry.cn-beijing.aliyuncs.com/oneflow/slurm-head:v0.1"
+IMG_NAME="registry.cn-beijing.aliyuncs.com/oneflow/slurm-head:v0.2"
 
 docker pull ${IMG_NAME}
 if docker ps -a --filter "ancestor=${IMG_NAME}" | grep -q "Up"; then
@@ -17,4 +17,4 @@ docker run -d --rm --name slurm-head-$USER --network=host \
 -v /mnt:/mnt \
 -v /data_32T:/data_32T \
 -v /data_160T:/data_160T \
---user=admin ${IMG_NAME} 
+--user=root ${IMG_NAME} 
